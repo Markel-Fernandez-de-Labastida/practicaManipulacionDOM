@@ -1,4 +1,9 @@
-const arrImagenes = [`https://images.pexels.com/photos/29765797/pexels-photo-29765797/free-photo-of-plano-plano-de-camara-vintage-rosa.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load`, `https://images.pexels.com/photos/31407301/pexels-photo-31407301/free-photo-of-montanero-solitario-explorando-un-pico-nevado-al-atardecer.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load`, `https://images.pexels.com/photos/31048554/pexels-photo-31048554.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load`, 'https://images.pexels.com/photos/28309193/pexels-photo-28309193.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load', `https://images.pexels.com/photos/27370962/pexels-photo-27370962/free-photo-of-mar-amanecer-paisaje-naturaleza.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load`];
+const arrImagenes = [ 
+    { imagen: `https://images.pexels.com/photos/29765797/pexels-photo-29765797/free-photo-of-plano-plano-de-camara-vintage-rosa.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load`, alt: `imagen 1`},
+    { imagen: `https://images.pexels.com/photos/31407301/pexels-photo-31407301/free-photo-of-montanero-solitario-explorando-un-pico-nevado-al-atardecer.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load`, alt: `imagen 2`}, 
+    { imagen: `https://images.pexels.com/photos/31048554/pexels-photo-31048554.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load`, alt: `imagen 3`},
+    { imagen: 'https://images.pexels.com/photos/28309193/pexels-photo-28309193.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load', alt: `imagen 4`},
+    { imagen: `https://images.pexels.com/photos/27370962/pexels-photo-27370962/free-photo-of-mar-amanecer-paisaje-naturaleza.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load`, alt: `imagen 5`}];
 
 const arrGaleria = [
     {
@@ -40,29 +45,81 @@ const arrGaleria = [
 
 const pintarBanner = () => {
     // Imagen en el header
+
     let randomImage = Math.floor(Math.random() * arrImagenes.length);
     console.log(randomImage);
-    let imgSeleccionada = arrImagenes[randomImage];
+    let imgSeleccionada = arrImagenes[randomImage].imagen;
     console.log(imgSeleccionada);
+
+    const header = document.querySelector(`HEADER`);
 
     const h1 = document.createElement("H1");
     h1.innerHTML = `Bienvenidos`;
 
-    const header = document.querySelector(`HEADER`);
+    const div = document.createElement("DIV");
 
     const imgHeader = document.createElement("IMG");
     imgHeader.setAttribute("src", imgSeleccionada);
+    imgHeader.setAttribute("alt", arrImagenes[randomImage].alt);
     header.append(h1);
-    header.append(imgHeader);
+    div.append(imgHeader);
+    header.append(div);
 }
 
 
 // tarjetas de la galeria
+/* h2
+                 div  -> aqui usar el flex
+                    div -> cards
+                        div -> contenedor de la imagen
+                            img
+                        h3  -> titulo de la card
+                        p   -> descripcion de la card
+*/
 const section = document.querySelector("SECTION");
+const h2 = document.createElement("H2");
+const div_flex = document.createElement("DIV");
+h2.innerHTML = `Recomendados`;
+section.append(h2);
+//const pintarCards = (galeria = arrGaleria) => {
+    arrGaleria.forEach((item, index, array) => {
+        console.log(item.titulo);
+        console.log(item.imagen);
+        console.log(item.description);
+        
+        
+        
+        const div_cards = document.createElement("DIV");
+        const div_img = document.createElement("DIV");
+        const img = document.createElement("IMG");
+        const h3 = document.createElement("H3");
+        const p_descripcion = document.createElement("P");
 
+        div_flex.classList.add(".cardFlex");
 
-const div = document.createElement("DIV");
-div.classList.add("tarjetaTitulo");
+        div_cards.classList.add(".divCards");
+
+        div_img.classList.add(".divImg");
+
+        img.setAttribute("src", item.imagen);
+
+        h3.innerHTML = item.titulo;
+        p_descripcion.innerHTML = item.description;
+
+        div_img.append(img);
+        div_cards.append(div_img);
+        div_cards.append(h3);
+        div_cards.append(p_descripcion);
+        div_flex.append(div_cards);
+        //section.append(h2);
+        h2.append(div_flex);
+        section.append(div_flex);
+
+        //div.classList.add("tarjetaTitulo");
+    })
+//}
+
 
 
 pintarBanner();
+//pintarCards();

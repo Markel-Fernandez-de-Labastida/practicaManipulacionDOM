@@ -1,0 +1,75 @@
+/* Setear valores por defecto */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+header{
+    width: 100%;
+    height: 30em;
+    overflow: auto; /* oculta lo que sobresale */
+}
+
+/*header div {
+    width: 100%;
+    height: 30em;
+    overflow: auto;  oculta lo que sobresale 
+}*/
+
+.divImg{
+    height: 40%;
+    width: 40%;
+}
+
+/*.divImg img{
+    height: 100%;
+    width: 100%;
+}*/
+
+img{
+    background-color: green;
+}
+
+header div img{
+    width: 100%;
+    height: 30em;
+    object-fit: cover; /* Cubre el contenedor y mantiene su relacion de aspecto */
+}
+
+/*header div img{
+    width: 100%;
+    height: 100%;
+}*/
+
+.hahaha{
+    background-color: green;
+    height: 200px;
+    width: 100%;
+}
+
+.cardFlex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: red;
+}
+
+.divCards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1f));
+    /* repeat: funcion que repite lo que hay en su interior
+       auto-fit:  */
+}
+
+.divImg{
+
+}
+
+/* media queries */
+
+@media screen {
+    
+}
