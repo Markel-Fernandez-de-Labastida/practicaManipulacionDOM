@@ -10,7 +10,7 @@
 header{
     width: 100%;
     height: 30em;
-    overflow: auto; /* oculta lo que sobresale */
+    overflow:hidden; /* oculta lo que sobresale */
 }
 
 /*header div {
@@ -19,10 +19,10 @@ header{
     overflow: auto;  oculta lo que sobresale 
 }*/
 
-.divImg{
-    height: 40%;
-    width: 40%;
-}
+/*.divImg{
+    height: 50%;
+    width: 50%;
+}*/
 
 /*.divImg img{
     height: 100%;
@@ -30,7 +30,8 @@ header{
 }*/
 
 img{
-    background-color: green;
+    width: 100%;
+    height: 100%;
 }
 
 header div img{
@@ -46,24 +47,33 @@ header div img{
 
 .hahaha{
     background-color: green;
+    margin: 20px;
     height: 200px;
     width: 100%;
 }
 
 .cardFlex{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    background-color: red;
+    align-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.cardFlex > div {
+    border: 1px solid black;
 }
 
 .divCards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1f));
+     display: flex;
+     flex-direction: column;
+     margin: 20px;
+
+/*    grid-template-columns: repeat(auto-fit, minmax(250px, 1f)); */
     /* repeat: funcion que repite lo que hay en su interior
        auto-fit:  */
 }
-
 .divImg{
 
 }

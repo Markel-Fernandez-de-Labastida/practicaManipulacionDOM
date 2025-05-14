@@ -43,25 +43,28 @@ const arrGaleria = [
     },
 ];
 
+const numeroAleatorio = (cantidad) => {
+    return Math.floor(Math.random() * cantidad);
+}
+
 const pintarBanner = () => {
     // Imagen en el header
 
-    let randomImage = Math.floor(Math.random() * arrImagenes.length);
-    console.log(randomImage);
-    let imgSeleccionada = arrImagenes[randomImage].imagen;
+    let randomNumber = numeroAleatorio(arrImagenes.length);
+    let imgSeleccionada = arrImagenes[randomNumber].imagen;
     console.log(imgSeleccionada);
 
     const header = document.querySelector(`HEADER`);
 
-    const h1 = document.createElement("H1");
-    h1.innerHTML = `Bienvenidos`;
+    const titulo = document.createElement("H1");
+    titulo.innerHTML = `Bienvenidos`;
 
     const div = document.createElement("DIV");
 
     const imgHeader = document.createElement("IMG");
     imgHeader.setAttribute("src", imgSeleccionada);
-    imgHeader.setAttribute("alt", arrImagenes[randomImage].alt);
-    header.append(h1);
+    imgHeader.setAttribute("alt", arrImagenes[randomNumber].alt);
+    header.append(titulo);
     div.append(imgHeader);
     header.append(div);
 }
@@ -81,7 +84,8 @@ const h2 = document.createElement("H2");
 const div_flex = document.createElement("DIV");
 h2.innerHTML = `Recomendados`;
 section.append(h2);
-//const pintarCards = (galeria = arrGaleria) => {
+
+const pintarCards = () => {
     arrGaleria.forEach((item, index, array) => {
         console.log(item.titulo);
         console.log(item.imagen);
@@ -95,11 +99,11 @@ section.append(h2);
         const h3 = document.createElement("H3");
         const p_descripcion = document.createElement("P");
 
-        div_flex.classList.add(".cardFlex");
+        div_flex.classList.add("cardFlex");
 
-        div_cards.classList.add(".divCards");
+        div_cards.classList.add("divCards");
 
-        div_img.classList.add(".divImg");
+        div_img.classList.add("divImg");
 
         img.setAttribute("src", item.imagen);
 
@@ -117,9 +121,9 @@ section.append(h2);
 
         //div.classList.add("tarjetaTitulo");
     })
-//}
+}
 
 
 
 pintarBanner();
-//pintarCards();
+pintarCards();
